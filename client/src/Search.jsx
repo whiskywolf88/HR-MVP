@@ -1,20 +1,36 @@
-import React from 'react';
+import React from "react";
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chicken: null,
-      beef: null,
-      fish: null,
-      vegetarian: null,
+      queries: {
+        chicken: null,
+        beef: null,
+        fish: null,
+        vegetarian: null,
+        option: "",
+      },
     };
   }
 
   render() {
-    return( <>
-    <form><label for="search"><input></input><button type="submit">Get Cookin'!</button></label></form>
-    </>)
+    return (
+      <>
+        <form>
+          <label for="search">
+            <input></input>
+            <button
+              onClick={
+                ((event) => event, this.props.getRecipes(this.state.queries))
+              }
+            >
+              Get Cookin'!
+            </button>
+          </label>
+        </form>
+      </>
+    );
   }
 }
 
