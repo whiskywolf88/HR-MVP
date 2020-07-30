@@ -1,0 +1,11 @@
+node_modules/
+bundle.js
+package-lock.json
+config.js
+
+.cache/
+coverage/
+dist/*
+!dist/index.html
+node_modules/
+*.log
