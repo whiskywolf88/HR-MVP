@@ -22,11 +22,12 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div className='recipe-search'>
+      <div className="recipe-search">
         <form>
           <label htmlFor="search">
-            <input type="text" onChange={this.handleChange}></input>
+            <input type="text" className="search-bar" onChange={this.handleChange}></input>
             <button
+              className="search-button"
               onClick={(event) =>
                 this.props.getRecipes(event, this.state.option)
               }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 
 class RecipeModal extends React.Component {
   constructor(props) {
@@ -7,31 +7,29 @@ class RecipeModal extends React.Component {
   }
 
   render() {
-    // const { recipe } = this.props;
-    console.log(this.props.recipe);
+    const { recipe, onHide } = this.props;
     return (
-      <>
-        <Modal
-          {...this.props}
-          onHide={this.props.onHide}
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>Recipe Name</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>Ingredients List / find the full {this.props.recipe.label} here</Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.props.onHide}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={() => console.log(`let's cook`)}>
+      <Modal {...this.props} size="lg" aria-labelledby="modal-title" centered>
+        <Modal.Header closeButton>
+          <Modal.Title id="modal-title">{recipe.label}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="modal-body">
+          <img src={recipe.image}></img>
+          <ul>
+            {recipe.ingredientLines.map((ingredient, index) => {
+              return <li key={index}>{ingredient}</li>;
+            })}
+          </ul>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={onHide}>Close</Button>
+          <a href={recipe.url} target="_blank">
+            <Button onClick={() => console.log(`let's get cookin`)}>
               Find Recipe
             </Button>
-          </Modal.Footer>
-        </Modal>
-      </>
+          </a>
+        </Modal.Footer>
+      </Modal>
     );
   }
 }

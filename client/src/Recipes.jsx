@@ -6,7 +6,7 @@ class Recipes extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipe: {},
+      recipe: { ingredientLines: [] },
       recipeModal: false,
     };
     this.showRecipeModal = this.showRecipeModal.bind(this);
@@ -29,34 +29,36 @@ class Recipes extends React.Component {
   render() {
     const { recipes } = this.props;
     return (
-      <div className="recipes-container">
-        {recipes.map((item, index) => {
-          let { recipe } = item;
-          console.log(recipe);
-          return (
-            <div
-              key={index}
-              className="recipe-card"
-              onClick={this.showRecipeModal}
-              onMouseEnter={() => this.setRecipe(recipe)}
-            >
-              <h3 className="recipe-name">{recipe.label}</h3>
-              <img src={recipe.image}></img>
-              {/* <p className="ingredients-list">{recipe.ingredients}</p> */}
-              <p className="recipe-ingredients">
-                {"- "}
-                {recipe.ingredientLines.length}
-                {" ingredients"}
-              </p>
-            </div>
-          );
-        })}
+      <div>
         <div>
           <RecipeModal
             show={this.state.recipeModal}
             onHide={() => this.showRecipeModal()}
             recipe={this.state.recipe}
           />
+        </div>
+        <div className="recipes-container">
+          {recipes.map((item, index) => {
+            let { recipe } = item;
+            console.log(recipe);
+            return (
+              <div
+                key={index}
+                className="recipe-card"
+                onClick={this.showRecipeModal}
+                onMouseEnter={() => this.setRecipe(recipe)}
+              >
+                <h3 className="recipe-name">{recipe.label}</h3>
+                <img src={recipe.image}></img>
+                {/* <p className="ingredients-list">{recipe.ingredients}</p> */}
+                <p className="recipe-ingredients">
+                  {"- "}
+                  {recipe.ingredientLines.length}
+                  {" ingredients"}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     );

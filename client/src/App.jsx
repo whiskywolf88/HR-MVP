@@ -29,7 +29,7 @@ class App extends React.Component {
   render() {
     const { name } = this.props;
     return (
-      <>
+      <div className='body'>
         <h1 className='greeting'>Find a Recipe</h1>
         <div>
           <Search getRecipes={this.getRecipes} />
@@ -37,7 +37,7 @@ class App extends React.Component {
         <div >
           <Recipes recipes={this.state.recipes} />
         </div>
-      </>
+      </div>
     );
   }
 }
