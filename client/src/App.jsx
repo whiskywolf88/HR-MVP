@@ -19,9 +19,7 @@ class App extends React.Component {
       })
       .then(({ data }) => {
         recipeResults = data.hits;
-        this.setState({ recipes: recipeResults }, () =>
-          console.log(this.state.recipes)
-        );
+        this.setState({ recipes: recipeResults });
       })
       .catch((err) => {
         console.error("No recipes found!");
