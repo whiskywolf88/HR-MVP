@@ -30,9 +30,11 @@ class App extends React.Component {
     const { name } = this.props;
     return (
       <>
-        <h1>Hello {name}</h1>
+        <h1 className='greeting'>Find a Recipe</h1>
         <div>
           <Search getRecipes={this.getRecipes} />
+        </div>
+        <div >
           <Recipes recipes={this.state.recipes} />
         </div>
       </>

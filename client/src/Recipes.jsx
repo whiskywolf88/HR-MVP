@@ -1,23 +1,67 @@
 import React from "react";
+import RecipeModal from "./RecipeModal";
+import { Modal } from "react-bootstrap";
 
-const Recipes = ({ recipes }) => {
-  return (
-    <div>
-      {recipes.map((item, index) => {
-        let { recipe } = item;
-        console.log(recipe);
-        return (
-          <div key={index} className="recipe-container">
-            <h3 className="recipe-name">{recipe.label}</h3>
-            <img src={recipe.image}></img>
-            {/* <p className="ingredients-list">{recipe.ingredients}</p> */}
-        <p className="recipe">{'- '}{recipe.ingredientLines}</p>
-          </div>
-        );
-      })}
-    </div>
-  );
-};
+class Recipes extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      recipe: {},
+      recipeModal: false,
+    };
+    this.showRecipeModal = this.showRecipeModal.bind(this);
+  }
+
+  showRecipeModal() {
+    // event.preventDefault();
+    // this.setState({ recipe: event.target });
+    this.state.recipeModal
+      ? this.setState({ recipeModal: false })
+      : this.setState({ recipeModal: true });
+  }
+
+  setRecipe(recipe) {
+    this.setState({
+      recipe: recipe,
+    });
+  }
+
+  render() {
+    const { recipes } = this.props;
+    return (
+      <div className="recipes-container">
+        {recipes.map((item, index) => {
+          let { recipe } = item;
+          console.log(recipe);
+          return (
+            <div
+              key={index}
+              className="recipe-card"
+              onClick={this.showRecipeModal}
+              onMouseEnter={() => this.setRecipe(recipe)}
+            >
+              <h3 className="recipe-name">{recipe.label}</h3>
+              <img src={recipe.image}></img>
+              {/* <p className="ingredients-list">{recipe.ingredients}</p> */}
+              <p className="recipe-ingredients">
+                {"- "}
+                {recipe.ingredientLines.length}
+                {" ingredients"}
+              </p>
+            </div>
+          );
+        })}
+        <div>
+          <RecipeModal
+            show={this.state.recipeModal}
+            onHide={() => this.showRecipeModal()}
+            recipe={this.state.recipe}
+          />
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Recipes;
 
