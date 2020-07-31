@@ -47,7 +47,7 @@ class Search extends React.Component {
             <button
               className="search-button"
               onClick={(event) =>
-                this.props.getRecipes(event, this.state.query)
+                this.props.getRecipes(event, this.state.query, this.state.allergies)
               }
             >
               Get Cookin'!

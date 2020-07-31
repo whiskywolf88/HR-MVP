@@ -11,12 +11,12 @@ class App extends React.Component {
     this.getRecipes = this.getRecipes.bind(this);
   }
 
-  getRecipes(event, queries) {
+  getRecipes(event, queries, allergies) {
     event.preventDefault();
     let recipeResults = [];
     axios
       .get("/recipes", {
-        params: { query: queries },
+        params: { query: queries, exclude: allergies },
       })
       .then(({ data }) => {
         console.log(data);
