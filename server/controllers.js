@@ -2,9 +2,10 @@ const models = require("./models");
 
 const getRecipes = (req, res) => {
   const recipeParams = req.query.query;
+  const exclusions = req.query.exclude
 
   models
-    .apiQuery(recipeParams)
+    .apiQuery(recipeParams, exclusions)
     .then(({ data }) => {
       res.send(data);
     })
