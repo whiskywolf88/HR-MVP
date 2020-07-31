@@ -22,7 +22,7 @@ class Search extends React.Component {
 
   render() {
     return (
-      <>
+      <div className='recipe-search'>
         <form>
           <label htmlFor="search">
             <input type="text" onChange={this.handleChange}></input>
@@ -35,7 +35,7 @@ class Search extends React.Component {
             </button>
           </label>
         </form>
-      </>
+      </div>
     );
   }
 }
