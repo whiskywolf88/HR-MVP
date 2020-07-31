@@ -1,6 +1,5 @@
 import React from "react";
 import RecipeModal from "./RecipeModal";
-import { Modal } from "react-bootstrap";
 
 class Recipes extends React.Component {
   constructor(props) {
@@ -13,8 +12,6 @@ class Recipes extends React.Component {
   }
 
   showRecipeModal() {
-    // event.preventDefault();
-    // this.setState({ recipe: event.target });
     this.state.recipeModal
       ? this.setState({ recipeModal: false })
       : this.setState({ recipeModal: true });
@@ -51,11 +48,18 @@ class Recipes extends React.Component {
                 <h3 className="recipe-name">{recipe.label}</h3>
                 <img src={recipe.image}></img>
                 {/* <p className="ingredients-list">{recipe.ingredients}</p> */}
-                <p className="recipe-ingredients">
-                  {"- "}
-                  {recipe.ingredientLines.length}
-                  {" ingredients"}
-                </p>
+                <ul>
+                  <li className="recipe-ingredients">
+                    {recipe.ingredientLines.length}
+                    {" ingredients"}
+                  </li>
+                  <li className="recipe-time">
+                    {recipe.totalTime > 0
+                      ? recipe.totalTime + " minutes prep time"
+                      : "click for details"}
+                    {/* {" minutes prep time"} */}
+                  </li>
+                </ul>
               </div>
             );
           })}

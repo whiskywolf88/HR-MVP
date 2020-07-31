@@ -3,7 +3,7 @@
 } */
 
 .body {
-  background-image: url(https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-1.2.1&auto=format&fit=crop&w=653&q=80);
+  background-image: url(https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80);
   background-size: cover;
 }
 
@@ -13,14 +13,16 @@
 
 .search-button {
   border-radius: 8%;
-  background-color: mediumblue;
+  background-color: rgba(46, 46, 224, 0.897);
   color: whitesmoke;
 }
 
 .greeting {
   display: flex;
   justify-content: center;
-  color: lightslategray;
+  color: rgba(65, 132, 219, 0.795);
+  text-shadow: -1px 0 whitesmoke, 0 1px whitesmoke, 1px 0 whitesmoke,
+    0 -1px whitesmoke;
 }
 
 .recipes-container {
@@ -30,7 +32,7 @@
 
 .recipe-card {
   z-index: 5;
-  background-color: whitesmoke;
+  background-color: rgb(211, 212, 219);
   width: 90%;
   display: flex;
   justify-self: center;
@@ -52,8 +54,13 @@
 }
 
 .recipe-name {
+  display: flex;
   justify-content: center;
   font-size: large;
+}
+
+.recipe-time {
+  font-size: smaller;
 }
 
 #modal-tital {
@@ -64,4 +71,15 @@
 .modal-body {
   display: flex;
   justify-self: center;
+}
+
+.paginator {
+  display: flex;
+  justify-content: center;
+}
+
+.yes-no {
+  margin-left: 3%;
+  width: 15%;
+  height: 5%;
 }
