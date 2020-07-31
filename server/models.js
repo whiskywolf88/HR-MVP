@@ -2,5 +2,5 @@
 const edamam = require("./edamamHelper");
 
 module.exports = {
-  apiQuery: (data) => edamam(data),
+  apiQuery: (data) => edamam.recipeSearch(data),
 };

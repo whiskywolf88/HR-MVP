@@ -9,20 +9,26 @@ class Search extends React.Component {
         beef: null,
         fish: null,
         vegetarian: null,
-        option: "",
       },
+      option: "",
     };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange() {
+    const value = event.target.value;
+    this.setState({ option: value });
   }
 
   render() {
     return (
       <>
         <form>
-          <label for="search">
-            <input></input>
+          <label htmlFor="search">
+            <input type="text" onChange={this.handleChange}></input>
             <button
-              onClick={
-                ((event) => event, this.props.getRecipes(this.state.queries))
+              onClick={(event) =>
+                this.props.getRecipes(event, this.state.option)
               }
             >
               Get Cookin'!

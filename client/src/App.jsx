@@ -1,5 +1,6 @@
 import React from "react";
 import Search from "./Search";
+import Recipes from "./Recipes";
 import axios from "axios";
 
 class App extends React.Component {
@@ -14,11 +15,13 @@ class App extends React.Component {
     let recipeResults = [];
     axios
       .get("/recipes", {
-        params: queries,
+        params: { query: queries },
       })
-      .then((res) => {
-        recipeResults.push(res.results);
-        this.setState({ recipes: recipeResults });
+      .then(({ data }) => {
+        recipeResults = data.hits;
+        this.setState({ recipes: recipeResults }, () =>
+          console.log(this.state.recipes)
+        );
       })
       .catch((err) => {
         console.error("No recipes found!");
@@ -32,6 +35,7 @@ class App extends React.Component {
         <h1>Hello {name}</h1>
         <div>
           <Search getRecipes={this.getRecipes} />
+          <Recipes recipes={this.state.recipes} />
         </div>
       </>
     );
