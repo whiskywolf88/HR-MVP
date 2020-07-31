@@ -1,13 +1,13 @@
-const api_keys = require("../config");
+const { app_id, app_key } = require("../config");
+const axios = require("axios");
 
-const recipeSearch = (data) => {
-  return axios.get("https://api.edamam.com/search", {
-    params: {
-      q: `${data}`,
-      app_id: api_keys.app_id,
-      app_key: api_keys.app_key,
-    },
-  });
+module.exports = {
+  recipeSearch: (data) => {
+    console.log("searching");
+    return axios.get(
+      `https://api.edamam.com/search?app_id=${app_id}&app_key=${app_key}&q=${data}`
+    );
+  },
 };
 
-module.exports = recipeSearch;
+// module.exports.recipeSearch = recipeSearch;

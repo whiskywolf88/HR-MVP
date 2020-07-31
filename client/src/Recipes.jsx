@@ -1,5 +1,5 @@
-import React from 'react';
+import React from "react";
 
-const Recipes = () => (<h1>Recipes for DAYS</h1>
-)
+const Recipes = ({ recipes }) => <h1>Recipes for DAYS</h1>;
 
+export default Recipes;

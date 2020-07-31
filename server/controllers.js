@@ -1,11 +1,11 @@
 const models = require("./models");
 
 const getRecipes = (req, res) => {
-  const recipeParams = req.params;
+  const recipeParams = req.query.query;
 
   models
     .apiQuery(recipeParams)
-    .then((data) => {
+    .then(({ data }) => {
       res.send(data);
     })
     .catch((err) => {
