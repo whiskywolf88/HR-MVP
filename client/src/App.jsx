@@ -27,6 +27,7 @@ class App extends React.Component {
         this.setState({ searched: true });
       })
       .catch((err) => {
+        alert("Sorry, no recipes found!");
         console.error("No recipes found!");
       });
   }
