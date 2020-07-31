@@ -6,13 +6,13 @@ export default class Allergies extends React.Component {
     super(props);
     this.state = {
       allergies: false,
-      yes: false,
+      // yes: false,
     };
     this.setAllergies = this.setAllergies.bind(this);
   }
 
   setAllergies() {
-    this.setState({ allergies: true, yes: true });
+    this.setState({ allergies: true });
   }
 
   render() {
@@ -22,30 +22,32 @@ export default class Allergies extends React.Component {
           <Modal.Title id="modal-title">Allergies</Modal.Title>
         </Modal.Header>
         <Modal.Body className="modal-body">
-          <h1>Do you have any allergies?</h1>
-          <Button className="yes-no" onClick={this.setAllergies}>
-            Yes
-          </Button>
-          {this.state.allergies ? (
+          {!this.state.allergies ? (
             <div>
-              <form>
+              <h1>Do you have any allergies?</h1>
+              <Button className="yes-no" onClick={this.setAllergies}>
+                Yes
+              </Button>
+              <Button className="yes-no" onClick={this.props.onHide}>
+                No
+              </Button>
+            </div>
+          ) : (
+            <div>
+              Please separate multiple allergies by space (no commas)
+              <form className='modal-body'>
                 <input
                   type="text"
                   name="allergies"
                   onChange={this.props.handleChange}
-                  placeholder="type allergies here"
+                  placeholder="Type allergies here"
                 ></input>
               </form>
             </div>
-          ) : null}
-          {!this.state.true ? (
-            <Button className="yes-no" onClick={this.props.onHide}>
-              No
-            </Button>
-          ) : null}
+          )}
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.onHide}>Close</Button>
+          <Button onClick={this.props.onHide}>Submit</Button>
         </Modal.Footer>
       </Modal>
     );

@@ -71,6 +71,7 @@
 .modal-body {
   display: flex;
   justify-self: center;
+  justify-content: space-around;
 }
 
 .paginator {
@@ -79,7 +80,7 @@
 }
 
 .yes-no {
-  margin-left: 3%;
-  width: 15%;
-  height: 5%;
+  margin-left: 15%;
+  width: 25%;
+  height: 50%;
 }
