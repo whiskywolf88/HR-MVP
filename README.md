@@ -7,11 +7,11 @@
 ## GET STARTED
 
 >Fork and clone the repo, then run $npm install from the root directory. After the dependencies are finished installing, run
->>$npm run build-dev
+- $npm run build-dev
 >to have Webpack transpile the React files use Babel and watch for changes.
 
 >Serve the files using $npm start (here configured to default to nodemon; if not installed globally either
->>$npm install nodemon
+- $npm install nodemon
 >or delete the script "start" from package.json), and you're (almost) ready to go (see below for API directions)!
 
 ## USING THE API
@@ -20,7 +20,7 @@
 >your own API ID and API Key.
 
 >In the root directory, create a file named
->>config.js.
+- config.js.
 >Export an object with the following set-up:
 
 >>{
