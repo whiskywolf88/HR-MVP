@@ -46,6 +46,7 @@ class App extends React.Component {
         <div className="paginator">
           {this.state.searched ? <Paginator /> : null}
         </div>
+        <div id="edamam-badge" data-color="white"></div>
       </div>
     );
   }
